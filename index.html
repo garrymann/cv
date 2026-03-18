@@ -4,16 +4,125 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="g.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="description" content="Gergely Földi's professional CV. Senior Software Test Automation Engineer, skills, experience, education, and certificates." />
+    <meta name="description" content="Gergely Földi's professional CV. Lead Software Test Automation Engineer, skills, experience, education, and certificates." />
     <!-- Preload LCP image (profile) -->
     <link rel="preload" as="image" href="/cv/assets/profile600-CqNDEPAM.jpg" type="image/jpeg" />
+    <!-- Inter font for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add Material Icons from Google Fonts CDN with font-display swap -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
     <title>Gergely Földi CV</title>
-    <script type="module" crossorigin src="/cv/assets/index-CucYqjTU.js"></script>
-    <link rel="stylesheet" crossorigin href="/cv/assets/index-Dgf9GhjY.css">
+    <script type="module" crossorigin src="/cv/assets/index-D43CK9lO.js"></script>
+    <link rel="stylesheet" crossorigin href="/cv/assets/index-DUmiPZE7.css">
   </head>
   <body>
+    <div id="loader">
+      <div class="loader-left"></div>
+      <div class="loader-right"></div>
+      <div class="loader-center">
+        <svg class="loader-ring" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="40" />
+        </svg>
+        <div class="loader-initials">GF</div>
+      </div>
+    </div>
+    <style>
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: all;
+      }
+      #loader.open {
+        pointer-events: none;
+      }
+      .loader-left, .loader-right {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        background: #1f5c45;
+        z-index: 9999;
+        transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+      .loader-left { left: 0; }
+      .loader-right { right: 0; }
+      #loader.open .loader-left {
+        transform: translateX(-100%);
+      }
+      #loader.open .loader-right {
+        transform: translateX(100%);
+      }
+      .loader-center {
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        width: 90px;
+        height: 90px;
+        margin-top: -45px;
+        margin-left: -45px;
+        z-index: 10000;
+      }
+      #loader.open .loader-center {
+        /* no fade here, initials handle their own zoom */
+      }
+      #loader.open .loader-ring {
+        transition: opacity 0.2s ease;
+        transition-delay: 0s;
+        opacity: 0;
+      }
+      #loader.open .loader-initials {
+        animation: zoomOut 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0s;
+      }
+      .loader-content-inner {
+        position: relative;
+        width: 90px;
+        height: 90px;
+      }
+      .loader-ring {
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        inset: 0;
+        transform: rotate(-90deg);
+      }
+      .loader-ring circle {
+        fill: none;
+        stroke: #c9954a;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 251.3;
+        stroke-dashoffset: 251.3;
+        animation: fillCircle 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      @keyframes fillCircle {
+        to { stroke-dashoffset: 0; }
+      }
+      .loader-initials {
+        position: absolute;
+        inset: 0;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+        letter-spacing: 2px;
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      @keyframes zoomOut {
+        0% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(5); }
+      }
+    </style>
     <div id="root"></div>
   </body>
 </html>
